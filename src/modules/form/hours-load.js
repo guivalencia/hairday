@@ -7,11 +7,14 @@ const hours = document.getElementById("hours")
 
 export function hoursLoad({ date }){
 
+    // Limpa a lista de horarios
     hours.innerHTML = ""
 
     const opening = openingHours.map((hour) => {
+        // Recupera somente a hora
         const [scheduleHour] = hour.split(":")
 
+        // Adiciona a hora na date e verificar se está no passado
         const isHourPast = dayjs(date).add(scheduleHour, "hour").isAfter(dayjs())
         
         return {
@@ -20,6 +23,7 @@ export function hoursLoad({ date }){
         }
     })
 
+    // Renderiza os horarios
     opening.forEach(({ hour, available}) => {
         const li = document.createElement("li")
 
@@ -39,6 +43,7 @@ export function hoursLoad({ date }){
         hours.append(li)
     })
 
+    // Adiciona o evento de clique nos horarios disponiveis
     hoursClick()
 }
 

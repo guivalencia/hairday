@@ -8,7 +8,6 @@ const periodNight = document.getElementById("period-night")
 export function schedulesShow({dailySchedules}){
     try {
         // Limpa as listas
-        console.log(dailySchedules)
         periodMorning.innerHTML = ""
         periodAfternoon.innerHTML = ""
         periodNight.innerHTML = ""
@@ -20,6 +19,7 @@ export function schedulesShow({dailySchedules}){
             
             // Adiciona o id do agendamento
             item.setAttribute("data-id", schedule.id)
+
             time.textContent = dayjs(schedule.when).format("HH:mm")
             name.textContent = schedule.name
 
@@ -46,7 +46,7 @@ export function schedulesShow({dailySchedules}){
         })
         
     } catch (error) {
-        alert("Não foi possivel exibir os agendamentos")
+        // alert("Não foi possivel exibir os agendamentos")
         console.log(error)
     }
 }
